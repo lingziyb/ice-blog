@@ -1,0 +1,45 @@
+.home-list {
+	max-width: 800px;
+	margin: auto;
+
+	.home-list-ul {
+		margin-top: 20px;
+
+	}
+
+	li {
+		padding: 50px;
+		background-color: #fff;
+		display: flex;
+		border-top: 1px solid #eee;
+
+		.cover {
+			width: 180px;
+			height: 180px;
+			background-color: #6C7A78;
+			background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528558079669&di=1ea4151a39b97b41ad779e9e603bfb06&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1388411098%2C5259549%26fm%3D214%26gp%3D0.jpg");
+			background-size: cover;
+			background-origin: content-box;
+			background-position: center;
+			cursor: pointer;
+		}
+
+		.info {
+			flex: 2;
+			margin-left: 35px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+
+			h2 {
+				cursor: pointer;
+				font-size: 32px;
+			}
+			p {
+				font-size: 16px;
+				line-height: 26px;
+			}
+		}
+
+	}
+}
