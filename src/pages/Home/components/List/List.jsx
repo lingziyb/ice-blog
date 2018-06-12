@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './List.scss';
+import Ellipsis from '@icedesign/ellipsis';
 
 export default class List extends Component {
 
@@ -54,7 +55,8 @@ export default class List extends Component {
 									<div class="cover"></div>
 									<div class="info">
 										<h2>{item.title}</h2>
-										<p>{item.content}</p>
+										<Ellipsis className='content' lineLimit={3} text={item.content} />
+										{/*<p>{item.content}</p>*/}
 										<span>三个月前发布 | 75条评论</span>
 									</div>
 								</li>

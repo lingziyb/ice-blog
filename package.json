@@ -6,6 +6,7 @@
   "dependencies": {
     "@icedesign/base": "^0.2.0",
     "@icedesign/container": "^0.1.0",
+    "@icedesign/ellipsis": "^0.1.2",
     "@icedesign/icon": "^0.1.1",
     "@icedesign/img": "^0.1.0",
     "@icedesign/layout": "^0.1.2",
