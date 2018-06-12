@@ -1,4 +1,4 @@
-# ice-website-homepage
+# ice-blog
 
 该模板适用于产品类的首页介绍，默认内置一个页面和五个不同风格的展示区块
 
