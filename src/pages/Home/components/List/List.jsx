@@ -8,7 +8,7 @@ export default class List extends Component {
 		this.state = {
 			articles: [
 				{
-					title: '美好的一天',
+					title: '美好的一天测试',
 					content: '真的好美好的一天，可以出去玩咯真的好美好的一天，可以出去玩咯真的好美好的一天，可以出去玩咯真的好美好的一天，可以出去玩咯真的好美好的一天，可以出去玩咯真的好美好的一天，可以出去玩咯'
 				},
 				{
