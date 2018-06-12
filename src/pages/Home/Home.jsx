@@ -17,6 +17,7 @@ export default class Home extends Component {
 			<div className="home-page" style={{background: '#fff'}}>
 				<LandingIntroBanner />
           		<List />
+				<Footer />
 			</div>
 		);
 	}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button} from '@icedesign/base';
 import './LandingIntroBanner.scss';
+import {enquire} from 'enquire-js';
 
 export default class LandingIntroBanner extends Component {
 	static displayName = 'LandingIntroBanner';
@@ -11,12 +12,35 @@ export default class LandingIntroBanner extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			isMobile: false
+		};
+	}
+
+	componentDidMount() {
+		this.scaleScreen();
+	}
+
+	scaleScreen() {
+		const isMobile = 'screen and (max-width: 720px)';
+
+		enquire.register(isMobile, {
+			match: () => {
+				this.setState({
+					isMobile: true
+				});
+			},
+			unmatch: () => {
+				this.setState({
+					isMobile: false
+				});
+			}
+		});
 	}
 
 	render() {
 		return (
-			<div className="landing-intro-banner" style={{height: '100vh'}}>
+			<div className="landing-intro-banner" style={{height: this.state.isMobile === true ? '40vh' : '100vh'}}>
 				<div
 					className="landing-intro-banner-background"
 					style={{
@@ -27,8 +51,8 @@ export default class LandingIntroBanner extends Component {
 				/>
 				<div className="landing-intro-banner-content-wrapper">
 					<div className="landing-intro-banner-content">
-						<h2 style={styles.title}>Lingzi</h2>
-						<p style={styles.subTitle}>
+						<h2 style={this.state.isMobile === true ? styles.smallTitle : styles.title}>Lingzi</h2>
+						<p style={this.state.isMobile === true ? styles.smallSubTitle : styles.subTitle}>
 							风景这边独好 ， 阅人无数不如行万里路
 						</p>
 						<div
@@ -52,31 +76,28 @@ const styles = {
 		color: '#fff',
 		marginBottom: '30px',
 	},
+	smallTitle:{
+		textAlign: 'center',
+		fontSize: '25px',
+		letterSpacing: '4px',
+		lineHeight: '60px',
+		color: '#fff',
+		marginBottom: '10px',
+	},
 	subTitle: {
 		fontSize: '30px',
 		margin: '0px',
 		color: '#fff',
 		textShadow: '#C8C8C8 1px 1px 2px',
 		textAlign: 'center',
-		lineHeight: '1.7em',
+		lineHeight: '30px',
 	},
-	leftButton: {
-		marginRight: '20px',
-	},
-	gitStar: {
-		border: '0px',
-		height: '32px',
-		width: '145px',
-		margin: '0 auto',
-	},
-	gitContainer: {
-		marginTop: '30px',
-		textAlign: 'center',
-	},
-	updateLogLinkWrap: {
-		textAlign: 'center',
-	},
-	updateLogLink: {
+	smallSubTitle: {
+		fontSize: '19px',
+		margin: '0px',
 		color: '#fff',
-	},
+		textShadow: '#C8C8C8 1px 1px 2px',
+		textAlign: 'center',
+		lineHeight: '30px',
+	}
 };

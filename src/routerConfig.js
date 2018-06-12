@@ -5,7 +5,6 @@
 import BlankLayout from './layouts/BlankLayout';
 import Home from './pages/Home';
 import Article from './pages/Article';
-import HeaderAsideFooterResponsiveLayout from './layouts/HeaderAsideFooterResponsiveLayout';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
@@ -16,7 +15,7 @@ const routerConfig = [
   },
   {
     path: '/article',
-    layout: HeaderAsideFooterResponsiveLayout,
+    layout: BlankLayout,
     component: Article,
   },
   {
