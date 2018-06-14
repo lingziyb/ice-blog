@@ -15,8 +15,9 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className="home-page" style={{background: '#fff'}}>
+				<Header />
 				<LandingIntroBanner />
-          		<List />
+				<List history={this.props.history}/>
 				<Footer />
 			</div>
 		);

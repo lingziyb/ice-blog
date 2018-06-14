@@ -1,5 +1,7 @@
+$width: 800px;
+
 .home-list {
-	max-width: 800px;
+	max-width: $width;
 	margin: auto;
 
 	.home-list-ul {

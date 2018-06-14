@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '@icedesign/layout';
+import './layout.scss';
 
 export default class BlankLayout extends Component {
   static propTypes = {};

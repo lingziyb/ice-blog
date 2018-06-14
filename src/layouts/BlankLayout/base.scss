@@ -1,0 +1,117 @@
+
+@media only screen and (min-width: 500px) {
+	.landing-intro-banner {
+		height: 100vh;
+
+		.landing-intro-banner-content {
+			h2 {
+				font-size: 46px;
+				margin-bottom: 60px;
+			}
+			p {
+				font-size: 30px;
+			}
+		}
+	}
+
+	.article-head {
+		height: 60vh;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.landing-intro-banner {
+		height: 40vh;
+		.landing-intro-banner-content {
+			h2 {
+				font-size: 25px;
+				margin-bottom: 10px;
+			}
+			p {
+				font-size: 19px;
+			}
+		}
+	}
+	.article-head {
+		height: 35vh;
+	}
+}
+
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset, img, input, button {
+	border: none;
+	padding: 0;
+	margin: 0;
+	outline-style: none;
+}
+
+/*去掉input等聚焦时的蓝色边框*/
+ul, ol {
+	list-style: none;
+}
+
+input {
+	padding-top: 0;
+	padding-bottom: 0;
+	font-family: "SimSun", "宋体";
+}
+
+select, input {
+	vertical-align: middle;
+}
+
+select, input, textarea {
+	font-size: 12px;
+	margin: 0;
+}
+
+textarea {
+	resize: none;
+}
+
+/*防止拖动*/
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙，或者用display：block也可以*/
+table {
+	border-collapse: collapse;
+}
+
+body {
+	color: #666;
+	background: #fff
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #C81623;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+/*设置h标签的大小，设置跟父亲一样大的字体font-size:100%;*/
+s, i, em {
+	font-style: normal;
+	text-decoration: none;
+}
+
+.col-red {
+	color: #C81623 !important;
+}
+

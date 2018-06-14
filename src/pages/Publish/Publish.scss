@@ -1,0 +1,13 @@
+.publish-page {
+	padding: 50px;
+	background-color: #ffffff;
+	height: 100vh;
+
+	.ql-editor.ql-blank::before {
+		font-style: normal;
+	}
+
+	.ql-editor {
+		min-height: 300px;
+	}
+}

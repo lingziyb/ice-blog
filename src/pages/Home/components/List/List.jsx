@@ -52,15 +52,19 @@ export default class List extends Component {
 		}
 	}
 
+	goArticle() {
+		this.props.history.push('/article');
+	}
+
 	render() {
 		return (
 			<div className="home-list">
 				<ul className="home-list-ul">
 					{
-						this.state.articles.map((item) => {
+						this.state.articles.map((item, index) => {
 							return (
-								<li>
-									<h2>{item.title}</h2>
+								<li key={index}>
+									<h2 onClick={this.goArticle.bind(this)}>{item.title}</h2>
 									<Ellipsis className='content' lineLimit={3} text={item.content}/>
 									{/*<p>{item.content}</p>*/}
 									<span className='time'>三个月前发布 &nbsp; | &nbsp; 75条评论</span>

@@ -5,6 +5,7 @@
 import BlankLayout from './layouts/BlankLayout';
 import Home from './pages/Home';
 import Article from './pages/Article';
+import Publish from './pages/Publish';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
@@ -17,6 +18,11 @@ const routerConfig = [
     path: '/article',
     layout: BlankLayout,
     component: Article,
+  },
+  {
+    path: '/publish',
+    layout: BlankLayout,
+    component: Publish,
   },
   {
     path: '*',

@@ -1,2 +1,51 @@
+$width: 800px;
+
 .article-page {
+	.article-head {
+		position: relative;
+		.article-head-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+		}
+		.article-head-info {
+			margin: auto;
+			max-width: $width;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			color: #fff;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			padding-bottom: 30px;
+			padding-left: 30px;
+			text-shadow: 2px 2px 10px #000;
+
+			h2 {
+				font-size: 26px;
+			}
+			p {
+				margin-top: 10px;
+				font-size: 18px;
+			}
+		}
+	}
+	.article-con {
+		width: $width;
+		margin: auto;
+		padding: 20px 15px;
+		font-size: 16px;
+
+		line-height: 30px;
+		p {
+			margin-top: 50px;
+			font-size: 16px;
+		}
+	}
 }

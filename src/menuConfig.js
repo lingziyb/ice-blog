@@ -10,6 +10,11 @@ const asideMenuConfig = [
     path: '/article',
     icon: 'home',
   },
+  {
+    name: 'publish',
+    path: '/publish',
+    icon: 'home',
+  },
 ];
 
 export { headerMenuConfig, asideMenuConfig };
