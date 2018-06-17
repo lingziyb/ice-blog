@@ -66,7 +66,7 @@ export default class Publish extends Component {
 						<Upload
 							action="//next-upload.shuttle.alibaba.net/upload" // 该接口仅作测试使用，业务请勿使用
 							accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-							listType="text-image"
+							listType="text"
 							beforeUpload={beforeUpload}
 							onChange={onChange}
 							{...init("upload", {
