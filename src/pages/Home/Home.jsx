@@ -16,7 +16,7 @@ export default class Home extends Component {
 	}
 
 	async componentDidMount() {
-		const articles = await ArticleService.list();
+		const articles = await ArticleService.List();
 		this.setState( { articles } );
 	}
 

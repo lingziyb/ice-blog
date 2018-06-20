@@ -26,20 +26,7 @@ const MENUS = [
 				path: '/ice/playground',
 			},
 		],
-	},
-	{
-		name: '社区',
-		children: [
-			{
-				name: '知乎专栏',
-				path: 'https://zhuanlan.zhihu.com/ice-design',
-			},
-			{
-				name: '万能群',
-				path: 'https://gw.alicdn.com/tfs/TB1iVfbe1SSBuNjy0FlXXbBpVXa-640-880.jpg',
-			},
-		],
-	},
+	}
 ];
 
 export default class Header extends Component {
