@@ -30,7 +30,7 @@ export default class Header extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			isOpenLogin: false
+			isOpenLogin: true
 		};
 	}
 
