@@ -9,26 +9,26 @@ import Publish from './pages/Publish';
 import NotFound from './pages/NotFound';
 
 const routerConfig = [
-  {
-    path: '/',
-    layout: BlankLayout,
-    component: Home,
-  },
-  {
-    path: '/article',
-    layout: BlankLayout,
-    component: Article,
-  },
-  {
-    path: '/publish',
-    layout: BlankLayout,
-    component: Publish,
-  },
-  {
-    path: '*',
-    layout: BlankLayout,
-    component: NotFound,
-  },
+	{
+		path: '/',
+		layout: BlankLayout,
+		component: Home,
+	},
+	{
+		path: '/article/:id',
+		layout: BlankLayout,
+		component: Article,
+	},
+	{
+		path: '/publish',
+		layout: BlankLayout,
+		component: Publish,
+	},
+	{
+		path: '*',
+		layout: BlankLayout,
+		component: NotFound,
+	},
 ];
 
 export default routerConfig;

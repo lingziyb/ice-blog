@@ -20,12 +20,16 @@ export default class Home extends Component {
 		this.setState( { articles } );
 	}
 
+	remove( index ) {
+		this.state.articles.splice( index, 1 );
+	}
+
 	render() {
 		return (
 			<div className="home-page" style={{ background: '#fff' }}>
 				<Header />
 				<LandingIntroBanner />
-				<List history={this.props.history} articles={this.state.articles}/>
+				<List history={this.props.history} remove={this.remove.bind( this )} articles={this.state.articles}/>
 				<Footer />
 			</div>
 		);

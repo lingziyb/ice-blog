@@ -9,12 +9,22 @@ $width: 800px;
 		padding: 0 15px;
 	}
 
-	li {
+	.li {
 		padding: 35px 0;
 		background-color: #fff;
 		display: flex;
 		border-top: 1px solid #eee;
 		flex-direction: column;
+		position: relative;
+
+		.btns {
+			position: absolute;
+			right: 0;
+			top: 20px;
+			Button {
+				margin: 5px;
+			}
+		}
 
 		h2 {
 			cursor: pointer;
@@ -28,8 +38,10 @@ $width: 800px;
 			font-size: 16px;
 			line-height: 28px;
 			margin-bottom: 20px;
+			max-height: 90px;
+			overflow: hidden;
 		}
-		.time{
+		.time {
 			color: #888;
 			font-size: 13px;
 		}

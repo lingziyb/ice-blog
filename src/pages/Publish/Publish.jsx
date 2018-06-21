@@ -85,7 +85,7 @@ export default class Publish extends Component {
 							{...init( "banner" )}
 						>
 							<Button type="primary" style={{ margin: "0 0 10px" }}>
-								上传文件---{this.state.isShowTip}
+								上传文件
 							</Button>
 						</Upload>
 					</FormItem>
