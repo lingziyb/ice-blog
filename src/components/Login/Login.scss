@@ -3,9 +3,134 @@
 	width: 100%;
 	height: 100%;
 	top: 0;
-	display: flex;
-	justify-content: center;
 	left: 0;
 	z-index: 10;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.box {
+		display: flex;
+		height: 50%;
+		width: 75%;
+		max-width: 700px;
+
+		.l {
+			background-color: #fff;
+			width: 300px;
+			z-index: 1;
+			text-align: center;
+			border-radius: 6px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			h2 {
+				color: #888888;
+				margin: 50px 0;
+			}
+			span {
+				border: none;
+				border-bottom: 1px solid #E0E0E0;
+			}
+			Input {
+				margin-top: 10px;
+			}
+			Button {
+				background-color: #774DF9;
+				color: #fff;
+				width: 70%;
+				height: 45px;
+				margin-top: 50px;
+			}
+		}
+		.r {
+			flex: 1;
+			background-color: #774DF9;
+			position: relative;
+			border-bottom-right-radius: 6px;
+			border-top-right-radius: 6px;
+			font-size: 160px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #ffffff;
+			//display: none;
+
+			.top {
+				position: absolute;
+				border-radius: 100px;
+				&.top-1 {
+					right: -50px;
+					top: -50px;
+					background-color: #E34D72;
+					height: 160px;
+					width: 160px;
+				}
+				&.top-2 {
+					right: 70px;
+					top: 50px;
+					background-color: #69C9E2;
+					height: 60px;
+					width: 60px;
+				}
+				&.top-3 {
+					right: 60px;
+					top: -30px;
+					background-color: #FFC078;
+					height: 120px;
+					width: 120px;
+				}
+				&.top-4 {
+					right: -50px;
+					top: 60px;
+					background-color: #F0E700;
+					height: 120px;
+					width: 120px;
+				}
+				&.top-5 {
+					right: 160px;
+					top: -20px;
+					background-color: #8F31FF;
+					height: 50px;
+					width: 50px;
+				}
+			}
+
+			.bot {
+				position: absolute;
+				border-radius: 100px;
+				z-index: 2;
+				&.bot-1 {
+					left: -30px;
+					bottom: -50px;
+					background-color: #01C8E7;
+					height: 140px;
+					width: 140px;
+				}
+				&.bot-2 {
+					left: -30px;
+					bottom: 40px;
+					background-color: #4EEE6A;
+					height: 120px;
+					width: 120px;
+				}
+				&.bot-3 {
+					left: 100px;
+					bottom: 70px;
+					background-color: #FB7F80;
+					height: 20px;
+					width: 20px;
+				}
+				&.bot-4 {
+					left: 50%;
+					bottom: 40%;
+					background-color: #EDEA02;
+					height: 30px;
+					width: 30px;
+				}
+			}
+		}
+	}
 }

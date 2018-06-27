@@ -3,35 +3,22 @@ import { Input, Balloon, Icon, Button } from '@icedesign/base';
 import Menu from '@icedesign/menu';
 import Logo from '../Logo';
 import './Header.scss';
-import { Link } from 'react-router-dom';
 import Login from '../Login';
-
-const MENUS = [
-	{
-		name: '登录',
-	},
-	{
-		name: 'lingzi',
-		children: [
-			{
-				name: '发布',
-				path: '/publish',
-			},
-			{
-				name: '退出',
-				path: '/logout',
-			},
-		],
-	}
-];
+import UserService from '../../service/user';
 
 export default class Header extends Component {
 
 	constructor( props ) {
 		super( props );
 		this.state = {
-			isOpenLogin: true
+			isOpenLogin: false,
+			user: {}
 		};
+	}
+
+	async componentDidMount() {
+		const user = await UserService.GetUserInfo();
+		if ( user.status == 200 ) this.setState( { user: user.data } );
 	}
 
 	toLogin() {
@@ -40,57 +27,54 @@ export default class Header extends Component {
 		} );
 	}
 
-	closeLogin() {
+	async closeLogin() {
 		this.setState( {
 			isOpenLogin: false
 		} );
+		const user = await UserService.GetUserInfo();
+		if ( user.status == 200 ) this.setState( { user: user.data } );
 	}
 
-	renderBalloonContent = ( menu ) => {
-		return (
-			<Menu.Item>
-				<Balloon
-					className="header-balloon-content"
-					closable={false}
-					triggerType="click"
-					trigger={
-						<a>
-							{menu.name}{' '}
-							<Icon
-								size="xxs"
-								type="arrow-down-filling"
-								className="arrow-down-filling-icon"
-							/>
-						</a>
-					}
-				>
-					{menu.children.map( ( subMenu ) => {
-						return (
-							<a href="#" className="custom-sub-menu">
-								{subMenu.name}
-							</a>
-						);
-					} )}
-				</Balloon>
-				<Login visible={this.state.isOpenLogin} closeLogin={this.closeLogin.bind( this )}></Login>
-			</Menu.Item>
-		);
-	};
+	toPublish() {
+		this.props.history.push( '/publish' );
+	}
+
+	async logout() {
+		const res = await UserService.Logout();
+		if ( res.status == 200 ) this.setState( { user: {} } );
+	}
 
 	renderMenuItem = () => {
-		return MENUS.map( ( menu ) => {
-			if ( menu.children ) {
-				return this.renderBalloonContent( menu );
-			}
+		if ( !this.state.user.userId ) {
 			return (
-				<Menu.Item key={menu.path}>
-					{
-						menu.path ? (<Link to={menu.path}>{menu.name}</Link>) : (
-								<div onClick={this.toLogin.bind( this )}>{menu.name}</div>)
-					}
+				<Menu.Item>
+					<div onClick={this.toLogin.bind( this )}>登录</div>
 				</Menu.Item>
 			);
-		} );
+		} else {
+			return (
+				<Menu.Item>
+					<Balloon
+						className="header-balloon-content"
+						closable={false}
+						triggerType="click"
+						trigger={
+							<a>
+								{this.state.user.username}
+								<Icon
+									size="xxs"
+									type="arrow-down-filling"
+									className="arrow-down-filling-icon"
+								/>
+							</a>
+						}>
+						<a href="javascript:void(0)" className="custom-sub-menu" onClick={this.toPublish.bind( this )}>发布</a>
+						<a href="javascript:void(0)" className="custom-sub-menu"
+						   onClick={this.logout.bind( this )}>退出</a>
+					</Balloon>
+				</Menu.Item>
+			)
+		}
 	};
 
 	render() {
@@ -104,6 +88,9 @@ export default class Header extends Component {
 						</Menu>
 					</div>
 				</div>
+
+				<Login visible={this.state.isOpenLogin}
+					   closeLogin={this.closeLogin.bind( this )}></Login>
 			</div>
 		);
 	}

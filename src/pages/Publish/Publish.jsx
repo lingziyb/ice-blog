@@ -19,7 +19,6 @@ export default class Publish extends Component {
 			text: '',
 			isShowTip: false
 		};
-		this.handleChange = this.handleChange.bind( this );
 	}
 
 	async handleSubmit() {
@@ -98,7 +97,7 @@ export default class Publish extends Component {
 					</FormItem>
 
 					<FormItem label="文章内容：" required {...formItemLayout} help="随便写点什么">
-						<ReactQuill onChange={this.handleChange} modules={editorToolbar}
+						<ReactQuill onChange={this.handleChange.bind( this )} modules={editorToolbar}
 									value={this.state.text} placeholder="开始创作"
 									{...init( "content" )} />
 					</FormItem>

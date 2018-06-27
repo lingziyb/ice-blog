@@ -4,6 +4,7 @@ import List from './components/List';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ArticleService from '../../service/article';
+import UserService from '../../service/user';
 
 export default class Home extends Component {
 	static displayName = 'Home';
@@ -11,13 +12,20 @@ export default class Home extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			articles: []
+			articles: [],
+			user: {}
 		};
 	}
 
 	async componentDidMount() {
 		const articles = await ArticleService.List();
-		this.setState( { articles } );
+		const user = await UserService.GetUserInfo();
+
+		if ( user.status == 200 ) {
+			this.setState( { articles, user: user.data } );
+		} else {
+			this.setState( { articles } );
+		}
 	}
 
 	remove( index ) {
@@ -27,9 +35,10 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className="home-page" style={{ background: '#fff' }}>
-				<Header />
+				<Header history={this.props.history} user={this.state.user}/>
 				<LandingIntroBanner />
-				<List history={this.props.history} remove={this.remove.bind( this )} articles={this.state.articles}/>
+				<List history={this.props.history} remove={this.remove.bind( this )} articles={this.state.articles}
+					  isLogin={this.state.user.userId ? true : false}/>
 				<Footer />
 			</div>
 		);

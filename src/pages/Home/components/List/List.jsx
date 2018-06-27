@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './List.scss';
-import Ellipsis from '@icedesign/ellipsis';
 import { Button } from '@icedesign/base';
 import ArticleService from '../../../../service/article';
 import Tip from '../../../../components/Tip';
@@ -16,6 +15,7 @@ export default class List extends Component {
 	}
 
 	goArticle( id ) {
+		console.log( 'article', this.props.history );
 		this.props.history.push( `/article/${id}` );
 	}
 
@@ -38,27 +38,35 @@ export default class List extends Component {
 		}, 3000 );
 	}
 
+	renderBtn( item, index ) {
+		if ( this.props.isLogin ) {
+			return (
+				<div className="btns">
+					<Button onClick={this.edit.bind( this, item.id )}
+							type="secondary">修改</Button>
+					<Button onClick={this.remove.bind( this, item.id, index )}
+							type="normal"
+							shape="warning">删除</Button>
+				</div>
+			)
+		} else {
+			return '';
+		}
+	}
+
 	render() {
 		return (
 			<div className="home-list">
-
 				<Tip title={this.state.tipVal} visible={this.state.isShowTip}></Tip>
 
 				<ul className="home-list-ul">
 					{
-						this.props.articles.map( ( item, index ) => {
+						this.props.articles && this.props.articles.map( ( item, index ) => {
 							return (
 								<li className="li" key={index}>
-
-									<div className="btns">
-										<Button onClick={this.edit.bind( this, item.id )} type="secondary">修改</Button>
-										<Button onClick={this.remove.bind( this, item.id, index )} type="normal"
-												shape="warning">删除</Button>
-									</div>
-
+									{this.renderBtn( item, index )}
 									<h2 onClick={this.goArticle.bind( this, item.id )}>{item.title}</h2>
 									<div className="content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
-									{/*<p>{item.content}</p>*/}
 									<span className='time'>三个月前发布 &nbsp; | &nbsp; 75条评论</span>
 								</li>
 							)
