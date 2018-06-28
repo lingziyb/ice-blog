@@ -11,7 +11,7 @@ export default class Tip extends Component {
 	render() {
 		return (
 			<div className="c-tip">
-				<Notice className="notice" title={this.props.title} iconType="success"
+				<Notice className="notice" title={this.props.title} iconType={this.props.iconType}
 						visible={this.props.visible}></Notice>
 			</div>
 		);

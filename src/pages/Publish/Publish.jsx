@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Publish.scss';
-import { Form, Input, Button, Checkbox, Field, Upload, Notice } from "@icedesign/base";
+import { Form, Input, Button, Checkbox, Field, Upload } from "@icedesign/base";
 import ReactQuill from 'react-quill';
+import Tip from '../../components/Tip';
 import 'react-quill/dist/quill.snow.css';
 import ArticleService from '../../service/article';
 
@@ -17,19 +18,38 @@ export default class Publish extends Component {
 
 		this.state = {
 			text: '',
-			isShowTip: false
+			tip: {
+				isShow: false,
+				val: '发布成功!',
+				icon: 'success'
+			},
+			article: {
+				title: '',
+				content: ''
+			},
+			articleId: '',
 		};
+
+	}
+
+	async componentDidMount() {
+		if ( this.props.location.query && this.props.location.query.id ) {
+			this.setState( { articleId: this.props.location.query.id } );
+			const article = await ArticleService.GetDetail( this.props.location.query.id );
+			this.field.setValues( article );
+		}
 	}
 
 	async handleSubmit() {
-		console.log( "收到表单值：", this.field.getValues() );
+		let res;
+		res = await ArticleService[ this.state.articleId ? 'Edit' : 'Publish' ]( this.field.getValues() );
 
-		const res = await ArticleService.Publish( this.field.getValues() );
+		this.setState( { tip: { isShow: true, val: res.msg, icon: res.status == 200 ? 'success' : 'warning' } } );
 
-		console.log( "收到表单值：", res );
-		this.setState( { isShowTip: true } );
+		console.log( 4444444, this.state.tip.icon );
 		setTimeout( () => {
-			this.setState( { isShowTip: false } )
+			this.setState( { tip: { isShow: false } } );
+			if ( res.status == 200 ) this.props.history.push( '/' );
 		}, 3000 );
 	}
 
@@ -70,9 +90,7 @@ export default class Publish extends Component {
 
 		return (
 			<div className="publish-page">
-
-				<Notice title="发布成功!" iconType="success" visible={this.state.isShowTip}
-						style={{ marginBottom: '60px' }}></Notice>
+				<Tip title={this.state.tip.val} iconType={this.state.tip.icon} visible={this.state.tip.isShow}></Tip>
 
 				<Form direction="ver" field={this.field}>
 					<FormItem label="上传头图：" {...formItemLayout}>

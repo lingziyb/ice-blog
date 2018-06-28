@@ -12,13 +12,7 @@ export default class Header extends Component {
 		super( props );
 		this.state = {
 			isOpenLogin: false,
-			user: {}
 		};
-	}
-
-	async componentDidMount() {
-		const user = await UserService.GetUserInfo();
-		if ( user.status == 200 ) this.setState( { user: user.data } );
 	}
 
 	toLogin() {
@@ -32,7 +26,7 @@ export default class Header extends Component {
 			isOpenLogin: false
 		} );
 		const user = await UserService.GetUserInfo();
-		if ( user.status == 200 ) this.setState( { user: user.data } );
+		if ( user.status == 200 ) this.props.setUser( user.data );
 	}
 
 	toPublish() {
@@ -41,11 +35,11 @@ export default class Header extends Component {
 
 	async logout() {
 		const res = await UserService.Logout();
-		if ( res.status == 200 ) this.setState( { user: {} } );
+		if ( res.status == 200 ) this.props.setUser( {} );
 	}
 
 	renderMenuItem = () => {
-		if ( !this.state.user.userId ) {
+		if ( !this.props.user.userId ) {
 			return (
 				<Menu.Item>
 					<div onClick={this.toLogin.bind( this )}>登录</div>
@@ -60,7 +54,7 @@ export default class Header extends Component {
 						triggerType="click"
 						trigger={
 							<a>
-								{this.state.user.username}
+								{this.props.user.username}
 								<Icon
 									size="xxs"
 									type="arrow-down-filling"

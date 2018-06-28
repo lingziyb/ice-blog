@@ -20,13 +20,10 @@ export default class List extends Component {
 	}
 
 	async edit( id ) {
-		const res = await ArticleService.Edit( id );
-		console.log( '---------编辑---------', res );
-
-		this.setState( { isShowTip: true, tipVal: '编辑成功' } );
-		setTimeout( () => {
-			this.setState( { isShowTip: false } )
-		}, 3000 );
+		this.props.history.push( {
+			pathname: '/publish',
+			query: { id },
+		} );
 	}
 
 	async remove( id, index ) {

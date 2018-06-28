@@ -32,10 +32,14 @@ export default class Home extends Component {
 		this.state.articles.splice( index, 1 );
 	}
 
+	setUser( user ) {
+		this.setState( { user } );
+	}
+
 	render() {
 		return (
 			<div className="home-page" style={{ background: '#fff' }}>
-				<Header history={this.props.history} user={this.state.user}/>
+				<Header history={this.props.history} user={this.state.user} setUser={this.setUser.bind( this )}/>
 				<LandingIntroBanner />
 				<List history={this.props.history} remove={this.remove.bind( this )} articles={this.state.articles}
 					  isLogin={this.state.user.userId ? true : false}/>

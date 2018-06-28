@@ -13,8 +13,8 @@ export default {
 		return await axios.post( '/getDetail', { id } ).then( res => res.data.data );
 	},
 
-	async Edit( id ){
-		return await axios.post( '/editArticle', { id } ).then( res => res.data );
+	async Edit( formData ){
+		return await axios.post( '/editArticle', formData ).then( res => res.data );
 	},
 
 	async Remove( id ){
