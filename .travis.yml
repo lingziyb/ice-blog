@@ -2,9 +2,5 @@ language: node_js
 node_js:
   - "8"
 install: npm install
-script:
-  - node --version
-  - npm --version
-  - npm config get registry
-  - npm run build
+script: npm run build
 
