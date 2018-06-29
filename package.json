@@ -16,6 +16,8 @@
 		"classnames": "^2.2.5",
 		"enquire-js": "^0.1.2",
 		"foundation-symbol": "^0.1.0",
+		"gulp": "^3.9.1",
+		"gulp-sftp": "^0.1.5",
 		"prop-types": "^15.5.8",
 		"react-document-title": "^2.0.3",
 		"react-quill": "^1.2.7",
