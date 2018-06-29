@@ -9,8 +9,8 @@ export default class Login extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			username: 'lingzi',
-			password: '52lingzi',
+			username: '',
+			password: '',
 			isShowTip: false,
 			tipVal: '提示'
 		};
