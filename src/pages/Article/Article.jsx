@@ -13,13 +13,15 @@ export default class Article extends Component {
 				author: 'lingzi',
 				updateTime: '2018-06-08',
 				readNum: '1223',
-				content: []
+				content: [],
+				banner: ''
 			}
 		};
 	}
 
 	async componentDidMount() {
-		const article = await ArticleService.GetDetail( this.props.match.params.id );
+		let article = await ArticleService.GetDetail( this.props.match.params.id );
+		article.banner = JSON.parse( article.banner )[ 0 ].imgURL;
 		this.setState( { article } );
 	}
 

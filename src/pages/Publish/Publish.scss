@@ -3,6 +3,10 @@
 	background-color: #ffffff;
 	height: 100vh;
 
+	.next-upload-list-item-thumbnail {
+		width: 200px;
+		height: 200px;
+	}
 	.ql-editor.ql-blank::before {
 		font-style: normal;
 	}

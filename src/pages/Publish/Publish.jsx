@@ -11,7 +11,9 @@ const FormItem = Form.Item;
 export default class Publish extends Component {
 	static displayName = 'Publish';
 
-	field = new Field( this );
+	field = new Field( this, {
+		deepReset: true // 打开清楚特殊类型模式(fileList是数组需要特别开启)
+	} );
 
 	constructor( props ) {
 		super( props );
@@ -27,7 +29,7 @@ export default class Publish extends Component {
 				title: '',
 				content: ''
 			},
-			articleId: '',
+			articleId: ''
 		};
 
 	}
@@ -36,17 +38,20 @@ export default class Publish extends Component {
 		if ( this.props.location.query && this.props.location.query.id ) {
 			this.setState( { articleId: this.props.location.query.id } );
 			const article = await ArticleService.GetDetail( this.props.location.query.id );
-			this.field.setValues( article );
+			this.field.setValues( {
+				...article,
+				banner: JSON.parse( article.banner )
+			} );
 		}
 	}
 
 	async handleSubmit() {
-		let res;
-		res = await ArticleService[ this.state.articleId ? 'Edit' : 'Publish' ]( this.field.getValues() );
+		let obj = this.field.getValues();
+		obj.banner = JSON.stringify( obj.banner );
+
+		const res = await ArticleService[ this.state.articleId ? 'Edit' : 'Publish' ]( obj );
 
 		this.setState( { tip: { isShow: true, val: res.msg, icon: res.status == 200 ? 'success' : 'warning' } } );
-
-		console.log( 4444444, this.state.tip.icon );
 		setTimeout( () => {
 			this.setState( { tip: { isShow: false } } );
 			if ( res.status == 200 ) this.props.history.push( '/' );
@@ -58,7 +63,7 @@ export default class Publish extends Component {
 	}
 
 	render() {
-		const init = this.field.init;
+		const { init, getValue } = this.field;
 		const formItemLayout = {
 			labelCol: {
 				fixedSpan: 10
@@ -84,8 +89,10 @@ export default class Publish extends Component {
 		};
 
 		const onSuccess = ( info ) => {
-			console.log( "---------上传成功---------" );
-			this.field.setValues( { banner: info.imgURL } );
+			console.log( "---------上传成功---------", info );
+
+
+			this.field.setValues( { banner: info.data } );
 		}
 
 		return (
@@ -94,12 +101,13 @@ export default class Publish extends Component {
 
 				<Form direction="ver" field={this.field}>
 					<FormItem label="上传头图：" {...formItemLayout}>
-						<Upload
-							action="http://127.0.0.1:7001/upload"
-							accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
-							listType="text-image"
-							onSuccess={onSuccess}
-							{...init( "banner" )}
+						<Upload className='upload'
+								action="/api/upload"
+								accept="image/png, image/jpg, image/jpeg, image/gif, image/bmp"
+								listType="text-image"
+								onSuccess={onSuccess}
+								fileList={ getValue( 'banner' ) && getValue( 'banner' ).length > 0 ? getValue( 'banner' ) : [] }
+								{...init( "banner" )}
 						>
 							<Button type="primary" style={{ margin: "0 0 10px" }}>
 								上传文件
