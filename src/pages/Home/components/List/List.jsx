@@ -64,7 +64,7 @@ export default class List extends Component {
 									{this.renderBtn( item, index )}
 									<h2 onClick={this.goArticle.bind( this, item.id )}>{item.title}</h2>
 									<div className="content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
-									<span className='time'>三个月前发布 &nbsp; | &nbsp; 75条评论</span>
+									<span className='time'>发布时间：{item.createTime} </span>
 								</li>
 							)
 						} )
