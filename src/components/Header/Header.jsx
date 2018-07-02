@@ -22,9 +22,7 @@ export default class Header extends Component {
 	}
 
 	async closeLogin() {
-		this.setState( {
-			isOpenLogin: false
-		} );
+		this.setState( { isOpenLogin: false } );
 		const user = await UserService.GetUserInfo();
 		if ( user.status == 200 ) this.props.setUser( user.data );
 	}

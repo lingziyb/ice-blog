@@ -1,4 +1,3 @@
-
 @media only screen and (min-width: 500px) {
 	.landing-intro-banner {
 		height: 100vh;
@@ -34,6 +33,23 @@
 	}
 	.article-head {
 		height: 35vh;
+	}
+	.login-page {
+		.box {
+			.r {
+				display: none !important;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.login-page {
+		.box {
+			h2 {
+				margin: 14% 0 !important;
+			}
+		}
 	}
 }
 

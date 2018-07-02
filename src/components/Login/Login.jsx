@@ -52,12 +52,13 @@ export default class Login extends Component {
 						<div className="l">
 							<h2>签名</h2>
 
-							<Input trim size="large" placeholder="username" value={this.state.username}
+							<Input trim size="large" placeholder="用户名" value={this.state.username}
 								   onChange={value => {
 									   this.setState( { username: value } )
 								   }}
 							/>
-							<Input trim htmlType="password" size="large" value={this.state.password}
+							<Input trim size="large" placeholder="密码" htmlType="password"
+								   value={this.state.password}
 								   onChange={value => {
 									   this.setState( { password: value } )
 								   }}
