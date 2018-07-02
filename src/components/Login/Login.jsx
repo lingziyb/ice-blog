@@ -23,14 +23,23 @@ export default class Login extends Component {
 
 	async login() {
 		const { username, password } = this.state;
+		if ( !username || !password ) {
+			this.setState( { isShowTip: true, tipVal: '请填写完整' } );
+			setTimeout( () => {
+				this.setState( { isShowTip: false } );
+			}, 1500 );
+		}
+
 		const res = await UserService.Login( { username, password } );
-
 		this.setState( { isShowTip: true, tipVal: res.msg } );
-
 		setTimeout( () => {
-			this.setState( { isShowTip: false } )
+			this.setState( { isShowTip: false } );
 			if ( res.status == 200 ) this.props.closeLogin();
 		}, 1500 );
+	}
+
+	loginByEnter( e ) {
+		if ( e.key == 'Enter' ) this.login();
 	}
 
 	render() {
@@ -52,6 +61,7 @@ export default class Login extends Component {
 								   onChange={value => {
 									   this.setState( { password: value } )
 								   }}
+								   onKeyDown={this.loginByEnter.bind( this )}
 							/>
 
 							<Button size="large" onClick={this.login.bind( this )}>登录</Button>
