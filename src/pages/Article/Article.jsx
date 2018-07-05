@@ -37,7 +37,7 @@ export default class Article extends Component {
 					/>
 					<div className="article-head-info">
 						<h2>{this.state.article.title}</h2>
-						<p>lingzi {this.state.article.updateTime} 1314次阅读</p>
+						<p>逍遥哥哥的灵儿 &nbsp; <span>{this.state.article.updateTime} &nbsp; 1314次阅读</span></p>
 					</div>
 				</header>
 				<article className="article-con"
