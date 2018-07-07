@@ -62,7 +62,7 @@ export default class List extends Component {
 							return (
 								<li className="li" key={index}>
 									{this.renderBtn( item, index )}
-									<h2 onClick={this.goArticle.bind( this, item.id )}>{item.title}</h2>
+									<h1 onClick={this.goArticle.bind( this, item.id )}>{item.title}</h1>
 									<div className="content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
 									<span className='time'>发布时间：{item.createTime} </span>
 								</li>

@@ -79,7 +79,7 @@ export default class Publish extends Component {
 				[ 'link', 'image' ],
 				[ 'bold', 'italic', 'underline' ],        // toggled buttons
 				[ 'blockquote', 'code-block' ],
-				[ { 'list': 'ordered' }, { 'list': 'bullet' } ],
+				[ { 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' } ],
 				[ { 'script': 'sub' }, { 'script': 'super' } ],      // superscript/subscript
 				[ { 'indent': '-1' }, { 'indent': '+1' } ],          // outdent/indent
 				[ { 'header': [ 1, 2, 3, 4, 5, 6, false ] } ],
@@ -87,7 +87,6 @@ export default class Publish extends Component {
 				[ { 'align': [] } ]
 			]
 		};
-
 		const onSuccess = ( info ) => {
 			console.log( "---------上传成功---------", info );
 
