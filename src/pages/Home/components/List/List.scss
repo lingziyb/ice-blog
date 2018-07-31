@@ -36,11 +36,16 @@ $width: 800px;
 		}
 		.content {
 			letter-spacing: 1px;
-			font-size: 16px;
-			line-height: 28px;
 			margin-bottom: 22px;
 			max-height: 75px;
 			overflow: hidden;
+
+			* {
+				font-size: 15px;
+				line-height: 26px;
+				padding: 0;
+				margin: 0;
+			}
 		}
 		.time {
 			color: #888;

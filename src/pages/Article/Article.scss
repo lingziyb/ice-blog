@@ -3,6 +3,8 @@ $width: 800px;
 .article-page {
 	.article-head {
 		position: relative;
+		box-shadow: 0px -3px 20px #bbb;
+
 		.article-head-background {
 			position: absolute;
 			top: 0;
@@ -45,6 +47,7 @@ $width: 800px;
 		margin: auto;
 		padding: 20px 15px;
 		font-size: 16px;
+
 		p {
 			margin-top: 10px;
 			font-size: 16px;
@@ -56,6 +59,23 @@ $width: 800px;
 			padding: 15px;
 			color: #333333;
 			font-family: "Source Code Pro", Consolas, Menlo, Monaco, "Courier New", monospace;
+		}
+
+		blockquote {
+			border-left: 4px solid #ddd;
+			padding-left: 20px;
+			margin-left: 0;
+		}
+
+		ul, ol {
+			margin-left: 25px;
+			line-height: 26px;
+		}
+		ol {
+			list-style: decimal inside;
+		}
+		ul {
+			list-style: disc inside;
 		}
 	}
 }
