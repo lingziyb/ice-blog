@@ -2,7 +2,12 @@ import axios from 'axios';
 
 export default {
 	async List(){
-		return await axios( '/api/getList' ).then( res => res.data.data );
+
+		// mock时
+		// return await axios.get( '/api/getList' ).then( res => res.data );
+
+		// 去除mock
+		return await axios.get( '/api/getList' ).then( res => res.data.data );
 	},
 
 	async Publish( formData ){

@@ -18,6 +18,7 @@
 		"foundation-symbol": "^0.1.0",
 		"gulp": "^3.9.1",
 		"gulp-sftp": "^0.1.5",
+		"mockjs": "^1.0.1-beta3",
 		"prop-types": "^15.5.8",
 		"react-document-title": "^2.0.3",
 		"react-quill": "^1.2.7",

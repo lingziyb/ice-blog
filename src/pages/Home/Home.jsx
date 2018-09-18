@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import ArticleService from '../../service/article';
 import UserService from '../../service/user';
+// import './mock';
 
 export default class Home extends Component {
 	static displayName = 'Home';
