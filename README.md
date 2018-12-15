@@ -1,4 +1,5 @@
 # ice-blog
+[![Build Status](https://travis-ci.org/lingziyb/ice-blog.svg?branch=master)](https://travis-ci.org/lingziyb/ice-blog)
 
 用阿里飞冰做的简单博客,功能： 登录、文章列表、发布、管理文章
 
