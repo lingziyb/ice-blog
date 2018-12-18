@@ -40,7 +40,7 @@ export default class Article extends Component {
 						<p>逍遥哥哥的灵儿 &nbsp; <span>{this.state.article.updateTime} &nbsp; 1314次阅读</span></p>
 					</div>
 				</header>
-				<article className="article-con"
+				<article className="article-con ql-editor"
 						 dangerouslySetInnerHTML={{ __html: this.state.article.content }}></article>
 
 			</div>
