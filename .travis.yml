@@ -4,4 +4,6 @@ node_js:
 install: npm install
 script:
   - npm run build
-  - gulp upload
+  - docker build -t lingzi/ice-blog .
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker push lingzi/blog
