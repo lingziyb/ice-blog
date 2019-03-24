@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "8"
+install: npm install
+script:
+  - npm run build
+  - docker build -t lingzi/blog .
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker push lingzi/blog
